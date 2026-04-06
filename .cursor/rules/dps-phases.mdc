@@ -1,0 +1,12 @@
+---
+description: Canonical Design Phase System (DPS-0 through DPS-8); read docs before inventing global UI patterns
+alwaysApply: true
+---
+
+# DPS guardrail
+
+- **Canonical map:** `docs/DPS_PHASES.md` in this repo — DPS-0 (foundation) through DPS-8 (polish/hardening).
+- Design and UI work should **name the phase** it belongs to (e.g. forms → DPS-3, charts → DPS-2).
+- **Do not** replace global tokens, layout shells, or nav with one-off styling; extend the design system instead.
+- **Feature modules** (Nutrition, Calendar, etc.) **consume** DPS — they are not the source of truth for global design structure.
+- If skipping a foundational phase for speed, **document the exception** in the PR or `docs/IMPLEMENTATION_STATUS.md`.

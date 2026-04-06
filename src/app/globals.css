@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ * Kinetic Energy — DPS-0 design tokens (see docs/KINETIC_DESIGN_SYSTEM.md)
+ * Semantic colors use HSL components for shadcn: hsl(var(--token))
+ */
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    /* Kinetic spacing (8px grid) */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-10: 40px;
+    --space-12: 48px;
+    --space-16: 64px;
+    --space-20: 80px;
+    /* Motion */
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
+    --ease-in: cubic-bezier(0.4, 0, 1, 1);
+    --duration-fast: 150ms;
+    --duration-base: 200ms;
+    --duration-slow: 300ms;
+    --duration-slower: 400ms;
+    /* Radius */
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius: 0.5rem;
+    /* DPS layout */
+    --dps-page-gutter: var(--space-4);
+    --dps-section-gap: var(--space-6);
+    --dps-stack-gap: var(--space-4);
+    --dps-touch-min: 44px;
+    --dps-content-max: 56rem;
+    --dps-content-wide-max: 80rem;
+  }
+
+  /* Kinetic dark (default app appearance) */
+  :root,
+  .dark {
+    --background: 0 0% 10.2%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 16.5%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 14%;
+    --popover-foreground: 0 0% 98%;
+    /* Orange primary CTA (solid fallback; gradient via Button) */
+    --primary: 16 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 18%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 18%;
+    --muted-foreground: 0 0% 65%;
+    /* Cyan — interactive / focus / active */
+    --accent: 186 100% 50%;
+    --accent-foreground: 0 0% 10%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 24%;
+    --input: 0 0% 22%;
+    --ring: 186 100% 50%;
+    --chart-1: 16 100% 50%;
+    --chart-2: 328 100% 50%;
+    --chart-3: 186 100% 50%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 280 65% 60%;
+  }
+
+  /* Optional light theme (toggle) */
+  .light {
+    color-scheme: light;
+    --background: 210 20% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 16 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 186 100% 40%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 186 100% 40%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    background-color: hsl(var(--background));
+  }
+
+  body {
+    @apply min-h-screen bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  .dps-focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm;
+  }
+
+  .dps-section-y {
+    @apply space-y-[var(--dps-section-gap)];
+  }
+
+  .dps-stack-y {
+    @apply space-y-[var(--dps-stack-gap)];
+  }
+
+  .font-display {
+    font-family: var(--font-display), system-ui, sans-serif;
+  }
+
+  .text-gradient-kinetic {
+    @apply bg-gradient-to-br from-[#FF4500] to-[#FF006E] bg-clip-text text-transparent;
+  }
+}
